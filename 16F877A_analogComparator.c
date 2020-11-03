@@ -23,7 +23,7 @@ void main(void) {
     TRISD1=0;  //led outputs
     TRISB1=0;
     TRISA0=1;  //a0 ldr input at -
-    TRISA3=1;  //a input for 2.5v at +
+    TRISA3=1;  //a3 input for 2.5v at +
     while(1){
         CM2=0; //independent comparator (010)
         CM1=1;
