@@ -22,11 +22,14 @@
 void main(void) {
     TRISD1=0;  //led outputs
     TRISB1=0;
-    TRISA1=1;  //a1,a2 inputs
-    TRISA2=1;
+    TRISA0=1;  //a0 ldr input at -
+    TRISA3=1;  //a input for 2.5v at +
     while(1){
-        CMCON|=(1<<CM1); //independent comparator (010)
-        if(C2OUT==1){
+        CM2=0; //independent comparator (010)
+        CM1=1;
+        CM0=0;
+        //C1INV=1;
+        if(C1OUT){
             RB1=0;
             RD1=1;
         }
@@ -34,7 +37,6 @@ void main(void) {
             RB1=1;
             RD1=0;
         }
-        CMCON &= ~(1<<CM1); //resetting for reading again
         __delay_ms(100);
     }
     return;
