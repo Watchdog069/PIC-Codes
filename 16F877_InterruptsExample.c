@@ -49,20 +49,20 @@ void main(void) {
     PEIE=1; //peripheral interrupts enable       
     CMIE=1;//comaparator intr enable bit  //inside PIE2
     
-    TRISB1=0; //led out
-    TRISD1=0; //led out
+    TRISB1=0; //led1 out
+    TRISD1=0; //led2 out
     TRISA0=1; //LDR at Vin- for comparator
-    TRISA3=1; //2.5v reference at Vin+ for comparator
-    
+    TRISA3=1; //2.5v reference at Vin+ for comparator  
     RD1=0;  //led off at main
+    
+    CM2=0; //independent comparator (010)
+    CM1=1;
+    CM0=0; 
     while(1){     //normal operation , blink RB1 at 1sec delay
-        CMCON|=(1<<CM1); //independent comparator (010) 
         RB1=1;
         __delay_ms(1000);
         RB1=0;
         __delay_ms(1000);
-        CM0=0;
-        CMCON &= ~(1<<CM0); //resetting for reading again
     }
     return;
 }
