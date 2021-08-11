@@ -37,7 +37,7 @@ void main(void) {
     while(1){
         setupADC(0);
         
-        for(i=0;i<100;i++){   //take average of 1000 samples
+        for(i=0;i<100;i++){   //take average of 100 samples
             x = calculateADC();
             total += x; 
         }
